@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catch the Falling Stars</title>
     <link rel="stylesheet" href="style.css">
-    
 </head>
 <body>
     <div class="star-game-wrapper">
@@ -14,12 +13,28 @@
             <div class="star-start-screen" id="startScreen">
                 <h1 class="star-game-title">⭐ Catch the Falling Stars ⭐</h1>
                 <input type="text" class="star-name-input" id="playerName" placeholder="Enter your name" maxlength="20">
-                <div class="star-instructions">
+                
+                <!-- Device Selection -->
+                <div class="device-selection">
+                    <h3>Select your device:</h3>
+                    <div class="device-options">
+                        <div class="device-option" id="desktopOption">
+                            <div class="device-icon">🖥️</div>
+                            <div class="device-label">Desktop</div>
+                        </div>
+                        <div class="device-option" id="mobileOption">
+                            <div class="device-icon">📱</div>
+                            <div class="device-label">Mobile</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="star-instructions" id="gameInstructions">
                     <p><strong>How to Play:</strong></p>
-                    <p>Use <strong>A & D</strong> keys or <strong>← & →</strong> arrow keys to move your basket</p>
+                    <p id="controlInstructions">Please select your device first</p>
                     <p>Catch as many falling stars as you can in 45 seconds!</p>
                 </div>
-                <button class="star-start-btn" id="startBtn">Let's Go!</button>
+                <button class="star-start-btn" id="startBtn" disabled>Let's Go!</button>
             </div>
 
             <!-- Game HUD -->
@@ -33,6 +48,12 @@
             <!-- Game Canvas -->
             <canvas class="star-game-canvas" id="gameCanvas" style="display: none;"></canvas>
 
+            <!-- Mobile Controls -->
+            <div class="mobile-controls" id="mobileControls">
+                <div class="mobile-btn left" id="leftBtn"></div>
+                <div class="mobile-btn right" id="rightBtn"></div>
+            </div>
+
             <!-- Game Over Screen -->
             <div class="star-game-over" id="gameOverScreen">
                 <h2>Game Over!</h2>
@@ -45,4 +66,4 @@
 
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
