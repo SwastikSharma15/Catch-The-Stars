@@ -39,8 +39,8 @@
 
             <!-- Game HUD -->
             <div class="star-hud" id="gameHud" style="display: none;">
-                <div>Score: <span id="currentScore">0</span></div>
-                <div>High Score: <span id="highScore">0</span></div>
+                <div>Your Score: <span id="currentScore">0</span></div>
+                <div>Current Highest Score: <span id="highScore">0</span></div>
             </div>
 
             <div class="star-timer" id="gameTimer" style="display: none;">45</div>
@@ -57,8 +57,10 @@
             <!-- Game Over Screen -->
             <div class="star-game-over" id="gameOverScreen">
                 <h2>Game Over!</h2>
-                <div class="star-final-score" id="finalScore">Final Score: 0</div>
+                <div class="star-final-score" id="finalScore">Your Final Score: 0</div>
+                <div class="star-high-score-info" id="highScoreInfo">Current Highest Score: 60</div>
                 <div id="playerGreeting"></div>
+                <div class="star-celebration" id="celebrationMessage"></div>
                 <button class="star-play-again-btn" id="playAgainBtn">Play Again</button>
             </div>
         </div>

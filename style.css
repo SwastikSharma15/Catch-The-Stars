@@ -298,9 +298,18 @@ body.dark .star-game-over {
     background: rgba(17, 17, 17, 0.95);
 }
 
-.star-final-score {
-    font-size: 2em;
+.star-final-score,
+.star-high-score-info {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.star-celebration {
+    font-size: 1.8em;
+    color: #FFD700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     margin-bottom: 20px;
+    animation: twinkle 1.5s infinite;
 }
 
 .star-play-again-btn {

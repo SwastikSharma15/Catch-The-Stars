@@ -27,7 +27,9 @@ function initializeStarGame() {
         currentScore: document.getElementById('currentScore'),
         highScore: document.getElementById('highScore'),
         finalScore: document.getElementById('finalScore'),
+        highScoreInfo: document.getElementById('highScoreInfo'),
         playerGreeting: document.getElementById('playerGreeting'),
+        celebrationMessage: document.getElementById('celebrationMessage'),
         playAgainBtn: document.getElementById('playAgainBtn'),
         desktopOption: document.getElementById('desktopOption'),
         mobileOption: document.getElementById('mobileOption'),
@@ -57,13 +59,13 @@ function initializeStarGame() {
         gameState.basket.y = canvas.height - 50;
     }
 
-    // Load high score from memory (session-based)
+    // Load high score from memory (session-based) with default of 60
     function loadHighScore() {
         try {
             const saved = sessionStorage.getItem('starCatcherHighScore');
-            return saved ? parseInt(saved) : 0;
+            return saved ? parseInt(saved) : 60; // Default high score is 60
         } catch (e) {
-            return 0;
+            return 60;
         }
     }
 
@@ -335,8 +337,24 @@ function initializeStarGame() {
         // Hide mobile controls
         elements.mobileControls.classList.remove('show');
 
-        // Update final score and show game over screen
-        elements.finalScore.textContent = `Final Score: ${gameState.score}`;
+        // Get current high score and check if player beat it
+        const currentHighScore = loadHighScore();
+        const isNewHighScore = gameState.score > currentHighScore;
+        
+        // Update final score text
+        elements.finalScore.textContent = `Your Final Score: ${gameState.score}`;
+        
+        // Update high score info and celebration message
+        if (isNewHighScore) {
+            // Save new high score
+            saveHighScore(gameState.score);
+            elements.highScoreInfo.textContent = `Current Highest Score: ${gameState.score}`;
+            elements.celebrationMessage.innerHTML = `🎉 CONGRATULATIONS! 🎉<br>NEW HIGH SCORE!<br>🌟 Amazing work, ${gameState.playerName}! 🌟`;
+        } else {
+            elements.highScoreInfo.textContent = `Current Highest Score: ${currentHighScore}`;
+            elements.celebrationMessage.textContent = '';
+        }
+        
         elements.playerGreeting.textContent = `Great job, ${gameState.playerName}!`;
         elements.gameOverScreen.style.display = 'flex';
     }
